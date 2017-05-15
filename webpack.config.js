@@ -4,13 +4,18 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var CommonsChunkPlugin = require("webpack/lib/optimize/CommonsChunkPlugin");
 module.exports = {
     devtool: 'eval-source-map',
-    entry: [
-        './public/src/entry.js'
-    ],
+    entry: {
+        main: './public/src/entry.js',
+        common: [
+            "react",
+            'react-dom',
+            'react-router'
+        ]
+    },
     output: {
         path: __dirname + '/public/dist',
         publicPath: '/dist/',
-        filename: 'bundle.js'
+        filename: '[name].[hash:5].js'
     },
     module: {
         rules:[
@@ -30,13 +35,26 @@ module.exports = {
         extensions: [ '.web.js', '.js', '.json'],
     },
     plugins: [
+        new webpack.DefinePlugin({
+            'process.env': {
+                NODE_ENV: JSON.stringify('production') //定义生产环境
+            }
+        }),
         new HtmlWebpackPlugin({
             filename: '../index.html', // 生成index地址：../index.html  相对output_path地址
             template: './index.html'  //模板地址：./index.html，相对webpack目录
         }),
         new webpack.optimize.CommonsChunkPlugin({
-            name: "commons",
-            filename: "commons.js",
+            name: "common",
+            filename: "common.bundle.js",
+        }),
+        new webpack.optimize.UglifyJsPlugin({
+            output: {
+                comments: false, // remove all comments
+            },
+            compress: {
+                warnings: false
+            }
         })
     ]
 };
