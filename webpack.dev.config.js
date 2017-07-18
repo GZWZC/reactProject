@@ -5,12 +5,12 @@ module.exports = {
     devtool: 'eval-source-map',
     entry: [
         'webpack-hot-middleware/client',
-        './public/src/entry.js'
+        './public/entry.js'
     ],
     output: {
-        path: __dirname + '/public/dist',
-        filename: 'bundle.js',
-        publicPath: '/dist/'
+        path: __dirname + '/build',
+        publicPath: '/',
+        filename: 'bundle.js'
     },
     module: {
         rules:[
@@ -28,8 +28,8 @@ module.exports = {
     plugins: [
         new webpack.HotModuleReplacementPlugin(),//热加载插件,
         new HtmlWebpackPlugin({
-            filename: '../index.html', // 生成index地址：../index.html  相对output_path地址
+            filename: 'index.html', // 生成index地址：../index.html  相对output_path地址
             template: './index.html'  //模板地址：./index.html，相对webpack目录
-        })
+        }),
     ]
 };

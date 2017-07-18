@@ -16,7 +16,7 @@ if(process.env.NODE_ENV == 'dev'){
 }
 
 
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'build')));
 
 
 server.listen(3000, function(err) {

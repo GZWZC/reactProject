@@ -5,7 +5,7 @@ var CommonsChunkPlugin = require("webpack/lib/optimize/CommonsChunkPlugin");
 module.exports = {
     devtool: 'eval-source-map',
     entry: {
-        main: './public/src/entry.js',
+        main: './public/entry.js',
         common: [
             "react",
             'react-dom',
@@ -13,8 +13,8 @@ module.exports = {
         ]
     },
     output: {
-        path: __dirname + '/public/dist',
-        publicPath: '/dist/',
+        path: __dirname + '/build',
+        publicPath: '/',
         filename: '[name].[hash:5].js'
     },
     module: {
@@ -41,7 +41,7 @@ module.exports = {
             }
         }),
         new HtmlWebpackPlugin({
-            filename: '../index.html', // 生成index地址：../index.html  相对output_path地址
+            filename: 'index.html', // 生成index地址：../index.html  相对output_path地址
             template: './index.html'  //模板地址：./index.html，相对webpack目录
         }),
         new webpack.optimize.CommonsChunkPlugin({
