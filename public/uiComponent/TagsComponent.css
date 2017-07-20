@@ -1,0 +1,24 @@
+/* 
+* @Author: wzc
+* @Date:   2017-02-07 12:00:14
+* @Last Modified by:   Marte
+* @Last Modified time: 2017-04-10 11:16:37
+*/
+.tags_box{
+    padding:10px 15px;
+    background: #fff;
+}
+.tag{
+    padding: 2px 14px;
+    display: inline-block;
+    color: #33C774;
+    border: 1px solid #33C774;
+    border-radius: 8px;
+    margin: 10px 15px 10px 0;
+    font-size: 15px;
+    border-radius: 100px;
+}
+.tag:active{
+    background: #33c774;
+    color:#fff;
+}
