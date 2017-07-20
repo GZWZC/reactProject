@@ -1,6 +1,8 @@
 var webpack = require('webpack');
 var path = require('path');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+var autoprefixer = require('autoprefixer');
+
 module.exports = {
     devtool: 'eval-source-map',
     entry: [
